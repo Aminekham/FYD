@@ -71,7 +71,6 @@ src/: Source code for data processing, feature engineering, model training, and 
 tests/: Unit tests for the project.
 Dockerfile: Instructions to build the Docker image.
 requirements.txt: List of dependencies required to run the project.
-<br />
 
 🛠️ Technologies Used
 Python: The main programming language used for development.
@@ -81,7 +80,6 @@ Alpaca: Used for text correction.
 SBERT: Used for resume-job matching.
 Docker: Used for containerization.
 SQLite: Used as the database.
-<br />
 
 🚀 Getting Started
 To get a local copy up and running, follow these simple steps.
@@ -94,16 +92,12 @@ Clone the repo
 git clone https://github.com/Aminekham/FYD.git
 cd FYD
 
-Build the Docker image
-docker build -t Dockerfile .
-
-Run the Docker container
-docker run -p 8000:8000 Dockerfile
+Run the python API
+python run.py
 
 Access the application
-Open your web browser and go to http://localhost:8000.
+Open your web browser and go to http://localhost:500.
 
-<br />
 
 🤝 Contributing
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
@@ -114,19 +108,11 @@ Create your Feature Branch (git checkout -b feature/AmazingFeature)
 Commit your Changes (git commit -m 'Add some AmazingFeature')
 Push to the Branch (git push origin feature/AmazingFeature)
 Open a Pull Request
-<br />
-
-📄 License
-Distributed under the MIT License. See LICENSE for more information.
-
-<br />
 
 📧 Contact
 Mohamed Amine Khammassi - lkham0508@gmail.com
 
 Project Link: https://github.com/Aminekham/FYD
-
-<br />
 
 🙏 Acknowledgements
 YOLOv8
