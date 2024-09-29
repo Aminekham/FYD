@@ -36,7 +36,6 @@ Step 4 - Access the application:
 
 Open your web browser and go to http://localhost:8000.
 
-<br />
 
 📂 Project Structure
 The project is organized as follows:
