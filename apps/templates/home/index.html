@@ -1,0 +1,145 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div class="content">
+    <div class="panel-header bg-primary-gradient">
+        <div class="page-inner py-5">
+            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                <div>
+                    <h2 class="text-white pb-2 fw-bold">Jobs Dashboard</h2>
+                </div>
+                <div class="ml-md-auto py-2 py-md-0">
+                    <form action="/change_resume" method="POST" enctype="multipart/form-data" class="d-inline">
+                        <input type="hidden" name="user_id" value="{{ user_id }}">
+                        <label for="change-resume" class="btn btn-white btn-border btn-round mr-2">Change Resume</label>
+                        <input type="file" name="resume" id="change-resume" class="d-none" accept=".pdf, .docx, .txt, .jpg, .jpeg, png" required onchange="this.form.submit()">
+                    </form>
+                    <form action="/upload_resume" method="POST" enctype="multipart/form-data" class="d-inline">
+                        <input type="hidden" name="user_id" value="{{ user_id }}">
+                        <label for="upload-resume" class="btn btn-secondary btn-round">Upload New Resume</label>
+                        <input type="file" name="resume" id="upload-resume" class="d-none" accept=".pdf, .jpg, .jpeg, .png" required onchange="this.form.submit()">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-inner mt--5">
+        <div class="row mt--2">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Your Resume</h4>
+                    </div>
+					<div class="card-body">
+						{% if processed_text %}
+							<ul>
+								{% for text in processed_text %}
+									<li>{{ text|replace("'", "")|replace('"', "")|replace('(', "")|replace(')', "")|safe }}</li>
+								{% endfor %}
+							</ul>
+						{% else %}
+							<p>No resume content available.</p>
+						{% endif %}
+					</div>
+				</div>
+            </div>
+        </div>
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="card-title fw-mediumbold">Suggested Jobs</div>
+					<div class="text-center mt-4">
+						<a href="http://127.0.0.1:5000/matching_db" class="btn btn-primary btn-lg btn-block">View Suggested Jobs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block javascripts %}
+<script src="/static/assets/js/setting-demo.js"></script>
+<script src="/static/assets/js/demo.js"></script>
+
+<script>
+    // Circle statistics creation
+    Circles.create({
+        id:'circles-1',
+        radius:45,
+        value:60,
+        maxValue:100,
+        width:7,
+        text: 5,
+        colors:['#f1f1f1', '#FF9E27'],
+        duration:400,
+        wrpClass:'circles-wrp',
+        textClass:'circles-text',
+        styleWrapper:true,
+        styleText:true
+    });
+
+    Circles.create({
+        id:'circles-2',
+        radius:45,
+        value:70,
+        maxValue:100,
+        width:7,
+        text: 36,
+        colors:['#f1f1f1', '#2BB930'],
+        duration:400,
+        wrpClass:'circles-wrp',
+        textClass:'circles-text',
+        styleWrapper:true,
+        styleText:true
+    });
+
+    Circles.create({
+        id:'circles-3',
+        radius:45,
+        value:40,
+        maxValue:100,
+        width:7,
+        text: 12,
+        colors:['#f1f1f1', '#F25961'],
+        duration:400,
+        wrpClass:'circles-wrp',
+        textClass:'circles-text',
+        styleWrapper:true,
+        styleText:true
+    });
+</script>
+{% endblock javascripts %}
+
+<!-- Add some CSS to style the resume cards -->
+<style>
+.resume-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.resume-card {
+    flex: 1 1 calc(33% - 1rem); /* Responsive layout */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.resume-content p {
+    margin: 0;
+    color: #333;
+    line-height: 1.5;
+}
+
+.resume-card:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s;
+}
+</style>
